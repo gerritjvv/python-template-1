@@ -1,14 +1,14 @@
 # python-template-1
 Basic python template project with a build script to run tests and basic functional utility helpers
 
-# Running your application
+## Running your application
 
 Type  `./build run`
 
 Now start coding :)
 
 
-# Getting started
+## Getting started
 
 Copy the contents of this project or fork from it. 
 
@@ -36,5 +36,7 @@ The `build.sh` supports loading environment files from and `.env` file.
 This is a simple and effective way of configuring your application. 
 Or as a starting point for configuration.
 
+## Database migrations and support
 
-
+Copy the `migrations.sh` file from the `https://github.com/gerritjvv/dbmigration` repo.
+It is a simple bash script using `psql` to run migrations.
