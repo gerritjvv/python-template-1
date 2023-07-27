@@ -40,3 +40,8 @@ Or as a starting point for configuration.
 
 Copy the `migrations.sh` file from the https://github.com/gerritjvv/dbmigration repo.
 It is a simple bash script using `psql` to run migrations.
+
+## Utility functions
+
+The `src/utils` folder contains utility functions that are useful and written here because a whole library is too much
+or because the implementations out there are not very practicle or have quirks.
