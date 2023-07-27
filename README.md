@@ -38,5 +38,5 @@ Or as a starting point for configuration.
 
 ## Database migrations and support
 
-Copy the `migrations.sh` file from the `https://github.com/gerritjvv/dbmigration` repo.
+Copy the `migrations.sh` file from the https://github.com/gerritjvv/dbmigration repo.
 It is a simple bash script using `psql` to run migrations.
