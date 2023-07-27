@@ -79,7 +79,7 @@ case $CMD in
     mypy "$PROJECT_SOURCE" "$PROJECT_TEST_SOURCE"
     ;;
    test )
-    pytest --capture=no --fixtures-per-test --exitfirst "$PROJECT_TEST_SOURCE/*"
+    pytest --capture=no --fixtures-per-test --exitfirst "$PROJECT_TEST_SOURCE"
     ;;
    install )
     install_reqs
