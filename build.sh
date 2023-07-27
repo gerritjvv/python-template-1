@@ -73,13 +73,15 @@ case $CMD in
         install_reqs
     fi
 
+    mkdir -p "$dir/target"
     set -e
     # adapt and change the project source and test source, and also the ignores
-    pylama --async -i E501,C901,W291,C231,E131,E722,E124,E125,E501,W293,E203 "$PROJECT_SOURCE" "$PROJECT_TEST_SOURCE"
-    mypy "$PROJECT_SOURCE" "$PROJECT_TEST_SOURCE"
+    pylama --async -i E501,C901,W291,C231,E131,E722,E124,E125,E501,W293,E203 "$PROJECT_SOURCE" "$PROJECT_TEST_SOURCE"  | tee "$dir/target/pylama.log"
+    mypy "$PROJECT_SOURCE" "$PROJECT_TEST_SOURCE"  | tee "$dir/target/mypy.log"
     ;;
    test )
-    pytest --capture=no --fixtures-per-test --exitfirst "$PROJECT_TEST_SOURCE"
+    mkdir -p "$dir/target"
+    pytest --capture=no --fixtures-per-test --exitfirst "$PROJECT_TEST_SOURCE" | tee "$dir/target/tests.log"
     ;;
    install )
     install_reqs
