@@ -47,3 +47,31 @@ It is a simple bash script using `psql` to run migrations.
 
 The `src/utils` folder contains utility functions that are useful and written here because a whole library is too much
 or because the implementations out there are not very practicle or have quirks.
+
+## Interactive changes and development
+
+Try: ```./build.sh interactive```
+
+It uses https://github.com/breuleux/jurigged and starts the `interactive.py` file. 
+Use this is a scratch path to expierment and run code as you develop it. 
+
+Any changes made are automatically reloaded and visible from interactive or the python console started.
+
+## Logging
+
+See `log.py`, allows to use context managers to do contextual binding for function calls.
+
+e.g
+
+```
+def do_a():
+  LOGGER.info("do", a=1)
+
+
+def run():
+  with logger(b=2, c=3):
+    do_a()
+    
+    with logger(d=4):
+      do_a()
+```

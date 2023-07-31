@@ -54,7 +54,18 @@ then
 
 fi
 
+export PYTHONPATH="${PYTHONPATH}:${PROJECT_SOURCE}:${PROJECT_TEST_SOURCE}"
+
 }
+
+
+run_jurigged () {
+ 
+  echo "Running jurigged with interactive.py, changes made to this script or any modules it refers to will be auto reloaded"
+  python -m jurigged -i interactive.py
+
+}
+
 
 check_venv
 
@@ -76,7 +87,7 @@ case $CMD in
     mkdir -p "$dir/target"
     set -e
     # adapt and change the project source and test source, and also the ignores
-    pylama --async -i E501,C901,W291,C231,E131,E722,E124,E125,E501,W293,E203 "$PROJECT_SOURCE" "$PROJECT_TEST_SOURCE"  | tee "$dir/target/pylama.log"
+    pylama -i E501,C901,W291,C231,E131,E722,E124,E125,E501,W293,E203 "$PROJECT_SOURCE" "$PROJECT_TEST_SOURCE"  | tee "$dir/target/pylama.log"
     mypy "$PROJECT_SOURCE" "$PROJECT_TEST_SOURCE"  | tee "$dir/target/mypy.log"
     ;;
    test )
@@ -86,6 +97,9 @@ case $CMD in
    install )
     install_reqs
     ;;
+   interactive )
+     run_jurigged
+     ;;
   dev)
    echo "Add development code here"
     ;;
